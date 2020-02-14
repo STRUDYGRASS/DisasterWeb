@@ -98,6 +98,8 @@
     }
 
     function UpdateInfo(m_time, m_thing) {
+        var data_info = [];
+        var data_hsp = [];
         $.ajax({
             url: "server.php",
             type: "POST",
@@ -109,10 +111,8 @@
             dataType: "json",
             success: function (data) {
                 if (m_thing == "医院") {
-                    var data_hsp = [];
                     data_hsp = data;
                 } else if (m_thing == "小区") {
-                    var data_info = [];
                     data_info = data;
                 }
             },
