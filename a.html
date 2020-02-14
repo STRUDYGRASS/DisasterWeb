@@ -35,6 +35,7 @@
     <script type="text/javascript"
         src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/MapWeb.js"></script>
 
     <title>疫情地图</title>
 </head>
@@ -475,25 +476,7 @@
     var markerClusterer2 = new BMapLib.MarkerClusterer(map, {
         markers: markers2
     });
-    var myStyles = [{
-        url: 'image/no1.jfif',
-        size: new BMap.Size(30, 26),
-        opt_anchor: [16, 0],
-        textColor: '#ff00ff',
-        opt_textSize: 10
-    }, {
-        url: 'image/no2.jfif',
-        size: new BMap.Size(40, 35),
-        opt_anchor: [40, 35],
-        textColor: '#ff0000',
-        opt_textSize: 12
-    }, {
-        url: 'image/no3.jfif',
-        size: new BMap.Size(50, 44),
-        opt_anchor: [32, 0],
-        textColor: 'white',
-        opt_textSize: 14
-    }];
+
     markerClusterer2.setStyles(myStyles);
     markerClusterer1.setGridSize(100);
     // 编写自定义函数,创建标注
@@ -537,18 +520,7 @@
 
 
 
-    var opts = {
-        width: 250, // 信息窗口宽度
-        height: 80, // 信息窗口高度
-        title: "详细信息", // 信息窗口标题
-        enableMessage: true //设置允许信息窗发送短息
-    };
 
-    function addClickHandler(content, marker) {
-        marker.addEventListener("click", function (e) {
-            openInfo(content, e)
-        });
-    };
 
     function openInfo(content, e) {
         var p = e.target;
@@ -556,26 +528,6 @@
         var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
         map.openInfoWindow(infoWindow, point); //开启信息窗口
     };
-
-
-
-
-
-
-
-
-
-
-
-    //为什么不写成直接函数封装呢？因为这样就只运行一次了，我也不知道为什么
-    //后面可以把医院的聚合改个样式，具体参考TextIconOverlay类做修改
-    map.addEventListener("dragend", function () {
-        UpdateThings();
-    });
-    map.addEventListener("zoomend", function () {
-        UpdateThings();
-    });
-
     function UpdateThings() {
         var zoom = map.getZoom();
         // console.log(zoom)
@@ -618,50 +570,69 @@
         }
     }
 
-    // 定义一个控件类,即function
-    function AttributeShow(what, size) {
-        // 默认停靠位置和偏移量
-        this.defaultAnchor = BMAP_ANCHOR_TOP_RIGHT;
-        this.defaultOffset = new BMap.Size(10, size);
-        this.what = what;
-        this.show = true;
-    }
 
-    // 通过JavaScript的prototype属性继承于BMap.Control
-    AttributeShow.prototype = new BMap.Control();
 
-    // 自定义控件必须实现自己的initialize方法,并且将控件的DOM元素返回
-    // 在本方法中创建个div元素作为控件的容器,并将其添加到地图容器中
-    AttributeShow.prototype.initialize = function (map) {
-        // 创建一个DOM元素
-        var div = document.createElement("div");
-        var That = this;
-        // 添加文字说明
-        div.appendChild(document.createTextNode("隐藏" + That.what));
-        // 设置样式
-        div.style.cursor = "pointer";
-        div.style.border = "1px solid gray";
-        div.style.backgroundColor = "white";
-        div.onclick = function (e) {
-            if (That.show) {
-                That.show = false;
-                div.firstChild.nodeValue = "显式" + That.what;
-            } else {
-                That.show = true;
-                div.firstChild.nodeValue = "隐藏" + That.what;
-            }
-            UpdateThings();
-        }
-        // 添加DOM元素到地图中
-        map.getContainer().appendChild(div);
-        // 将DOM元素返回
-        return div;
-    }
+
+    //为什么不写成直接函数封装呢？因为这样就只运行一次了，我也不知道为什么
+    //后面可以把医院的聚合改个样式，具体参考TextIconOverlay类做修改
+    map.addEventListener("dragend", function () {
+        UpdateThings();
+    });
+    map.addEventListener("zoomend", function () {
+        UpdateThings();
+    });
+
     // 创建控件
     var mAS_HSP = new AttributeShow("医院", 80);
     var mAS_INFO = new AttributeShow("小区", 120);
     // 添加到地图当中
     map.addControl(mAS_HSP);
     map.addControl(mAS_INFO);
+
+
+
+
+
+
+
+
+
+    function UpdateInfo(m_time, m_thing) {
+        // $.ajax({
+        //     url: "???",
+        //     type: "POST",
+        //     data: {
+        //         time: m_time,
+        //         thing: m_thing
+        //     },
+        //     cache: false,
+        //     dataType: "json",
+        //     success: function (data) {
+        //         if (m_thing == "医院") {
+        //             data_hsp = data;
+        //         } else if (m_thing == "小区") {
+        //             data_info = data;
+        //         }
+        //     },
+        //     error: function (err) {
+        //         alert("数据更新失败！");
+        //     }
+        // });
+        data_hsp = [];
+        data_info = [];
+    }
+
+    function UpdateInfos(time){
+        UpdateInfo(time,"医院");
+        UpdateInfo(time,"小区");
+        UpdateThings();
+    }
+
+    var timelist = ["2020-02-10","2020-02-11","2020-02-12"];
+
+
+    var timeline = new TimeLine("2020-02-11");
+    map.addControl(timeline);
+    // UpdateInfos("2020-02-11");
     UpdateThings();
 </script>
