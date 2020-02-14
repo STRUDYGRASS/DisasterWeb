@@ -34,9 +34,9 @@
 			  $data = array();
 			  $options = ['projection' => ['_id' => 0]];
 			  $query = new MongoDB\Driver\Query($filter, $options);
-			  echo "<script>alert(\"a\")</sript>";
+
 			  $cursor = $conn->executeQuery($mongoDB.".".$collection, $query);
-			  echo "<script>alert(\"a\")</sript>";
+			  
 			  foreach($cursor as $value) {
 			  $data[] = (array)$value;
 			  }

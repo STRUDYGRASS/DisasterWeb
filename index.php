@@ -98,8 +98,6 @@
     }
 
     function UpdateInfo(m_time, m_thing) {
-        var data_info = [];
-        var data_hsp = [];
         $.ajax({
             url: "server.php",
             type: "POST",

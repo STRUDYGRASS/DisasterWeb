@@ -16,7 +16,6 @@
 		foreach ($data as $dataValue) {
 			$data_need[] = [$dataValue['坐标x'],$dataValue['坐标y'],$dataValue['医院']];
 			}
-			print($data_need);
 		return json_encode($data_need);
 	}
 
