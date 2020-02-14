@@ -38,6 +38,7 @@
 			  foreach($cursor as $value) {
 			  $data[] = (array)$value;
 			  }
+			  print_r($data);
 			  return $data;
 			 } catch (Exception $e) {
 			 }
