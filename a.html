@@ -10,7 +10,7 @@
 	</style>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3ccb5362c4712a1dd2df47f58f49188a"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
-	<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
 	
 	<title>疫情地图</title>
 </head>
@@ -33,6 +33,26 @@
     //初始化点聚合
     var markerClusterer1=new BMapLib.MarkerClusterer(map, {markers:markers});
     var markerClusterer2=new BMapLib.MarkerClusterer(map, {markers:markers2});
+    var myStyles = [{
+                url: 'image/no1.jfif',
+                size: new BMap.Size(30, 26),
+                opt_anchor: [16, 0],
+                textColor: '#ff00ff',
+                opt_textSize: 10
+            }, {
+                url: 'image/no2.jfif',
+                size: new BMap.Size(40, 35),
+                opt_anchor: [40, 35],
+                textColor: '#ff0000',
+                opt_textSize: 12
+            }, {
+                url: 'image/no3.jfif',
+                size: new BMap.Size(50, 44),
+                opt_anchor: [32, 0],
+                textColor: 'white',
+                opt_textSize: 14
+            }];
+    markerClusterer2.setStyles(myStyles);
     markerClusterer1.setGridSize(100);
 	// 编写自定义函数,创建标注
 	// 编写自定义函数,创建标注
@@ -543,7 +563,7 @@ function UpdateThings(){
                         pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
                         if (bound.containsPoint(pt) && mAS_HSP.show){  
                             var content = data_hsp[i][2];
-                            var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
+                            var myIcon = new BMap.Icon("image/hsp.png", new BMap.Size(24,24));
 
                             var marker2 = new BMap.Marker(pt,{icon:myIcon});        // 创建标注    
                             markers2.push(marker2);
