@@ -34,6 +34,7 @@
 			  $data = array();
 			  $options = ['projection' => ['_id' => 0]];
 			  $query = new MongoDB\Driver\Query($filter, $options);
+			  echo "------";
 			  $cursor = $conn->executeQuery($mongoDB.".".$collection, $query);
 			  foreach($cursor as $value) {
 			  $data[] = (array)$value;
