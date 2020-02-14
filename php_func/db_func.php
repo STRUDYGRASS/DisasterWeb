@@ -1,6 +1,4 @@
 <?php
-	
-	include("/process_func.php");
 	class dbClass
 	{
 
