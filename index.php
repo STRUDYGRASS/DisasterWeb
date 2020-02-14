@@ -97,7 +97,6 @@
         }
     }
 
-<<<<<<< HEAD
     function UpdateInfo(m_time, m_thing) {
         $.ajax({
             url: "server.php",
@@ -126,11 +125,7 @@
         UpdateInfo(time,"小区");
         UpdateThings();
     }
-=======
->>>>>>> 13a52d6ef093448e5b1becf77b59741cb72aaf7b
-
-
-
+    
     // 百度地图API功能
     var map = new BMap.Map("allmap");
     // map.centerAndZoom("泉州",12);  
