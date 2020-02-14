@@ -12,8 +12,8 @@
 				$password = "HQU@2017";
 			  	$connStr = $mongodbUrl;
 			  	$options = array(
-				   'username' => $confArr['username'],
-				   'password' => $confArr['password'],
+				   'username' => $username,
+				   'password' => $password,
 				  );
 			  	return new MongoDB\Driver\Manager($connStr, $options);
 			}
