@@ -507,7 +507,6 @@
 
 
 
-
 //为什么不写成直接函数封装呢？因为这样就只运行一次了，我也不知道为什么
 //后面可以把医院的聚合改个样式，具体参考TextIconOverlay类做修改
 map.addEventListener("dragend",function(){  
@@ -519,7 +518,7 @@ map.addEventListener("zoomend",function(){
 
 function UpdateThings(){
     var zoom=map.getZoom();
-				console.log(zoom)
+				// console.log(zoom)
 				if(zoom<15){
 					//获取屏幕边界
 					var bound=map.getBounds();
@@ -603,7 +602,7 @@ function AttributeShow(what,size){
 	// 添加到地图当中
 	map.addControl(mAS_HSP);
     map.addControl(mAS_INFO);
-
+    UpdateThings();
 </script>
 
 
