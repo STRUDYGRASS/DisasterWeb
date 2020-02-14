@@ -23,7 +23,7 @@
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");
     // map.centerAndZoom("泉州",12);  
-    map.centerAndZoom(new BMap.Point(118.680144,24.880476), 13);//须设置地图中心，不然会报错
+    map.centerAndZoom(new BMap.Point(118.680144,24.880476), 13);//须显式设置地图中心，不然会报错
 		map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
     map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
     
@@ -290,12 +290,12 @@
 				title : "详细信息" , // 信息窗口标题
 				enableMessage:true//设置允许信息窗发送短息
 			   };
-	for(var i=0;i<data_info.length;i++){
-		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
-		var content = data_info[i][2];
-		map.addOverlay(marker);               // 将标注添加到地图中
-		addClickHandler(content,marker);
-	};
+	// for(var i=0;i<data_info.length;i++){
+	// 	var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+	// 	var content = data_info[i][2];
+	// 	map.addOverlay(marker);               // 将标注添加到地图中
+	// 	addClickHandler(content,marker);
+	// };
 	function addClickHandler(content,marker){
 		marker.addEventListener("click",function(e){
 			openInfo(content,e)}
@@ -511,26 +511,25 @@
  ]
 
 
- for(var i=0;i<data_hsp.length;i++){
-		// var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
-		// var content = data_info[i][2];
-		// map.addOverlay(marker);               // 将标注添加到地图中
-		// addClickHandler(content,marker);
+//  for(var i=0;i<data_hsp.length;i++){
+// 		// var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+// 		// var content = data_info[i][2];
+// 		// map.addOverlay(marker);               // 将标注添加到地图中
+// 		// addClickHandler(content,marker);
 	
 
-	//创建医院信息
-	var pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
-	var content = data_hsp[i][2];
-	var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
-	var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
-	map.addOverlay(marker2);   
-	addClickHandler(content,marker2); 
-}
+// 	//创建医院信息
+// 	var pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
+// 	var content = data_hsp[i][2];
+// 	var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
+// 	var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+// 	map.addOverlay(marker2);   
+// 	addClickHandler(content,marker2); 
+// }
 
 
 //为什么不写成函数封装呢？因为这样就只运行一次了，我也不知道为什么
 //后面可以把医院的聚合改个样式，具体参考TextIconOverlay类做修改
-//TODO:修改markerClusterer类以便于输出在集合中的点实现隐藏
 map.addEventListener("dragend",function(){  
     var zoom=map.getZoom();
 				console.log(zoom)
@@ -547,15 +546,22 @@ map.addEventListener("dragend",function(){
                     for (var i=0; i<data_info.length; i++) {
                         pt = new BMap.Point(data_info[i][0],data_info[i][1]);
                         if (bound.containsPoint(pt) ){  
-                        var marker1 = new BMap.Marker(pt);        // 创建标注    
+                        var marker1 = new BMap.Marker(pt);        // 创建标注  
+                        var content = data_info[i][2];
+
                         markers.push(marker1);
+                        addClickHandler(content,marker1);                          
                         }
                     }
                     for (var i=0; i<data_hsp.length; i++) {
                         pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
                         if (bound.containsPoint(pt) ){  
-                        var marker2 = new BMap.Marker(pt);        // 创建标注    
-                        markers2.push(marker2);
+                            var content = data_hsp[i][2];
+                            var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
+
+                            var marker2 = new BMap.Marker(pt,{icon:myIcon});        // 创建标注    
+                            markers2.push(marker2);
+                            addClickHandler(content,marker2);                             
                         }
                     }
                     //添加聚合点
@@ -579,15 +585,22 @@ map.addEventListener("zoomend",function(){
                     for (var i=0; i<data_info.length; i++) {
                         pt = new BMap.Point(data_info[i][0],data_info[i][1]);
                         if (bound.containsPoint(pt) ){  
-                        var marker1 = new BMap.Marker(pt);        // 创建标注    
+                        var marker1 = new BMap.Marker(pt);        // 创建标注  
+                        var content = data_info[i][2];
+
                         markers.push(marker1);
+                        addClickHandler(content,marker1);                          
                         }
                     }
                     for (var i=0; i<data_hsp.length; i++) {
                         pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
                         if (bound.containsPoint(pt) ){  
-                        var marker2 = new BMap.Marker(pt);        // 创建标注    
-                        markers2.push(marker2);
+                            var content = data_hsp[i][2];
+                            var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
+
+                            var marker2 = new BMap.Marker(pt,{icon:myIcon});        // 创建标注    
+                            markers2.push(marker2);
+                            addClickHandler(content,marker2);                             
                         }
                     }
                     //添加聚合点
@@ -597,39 +610,6 @@ map.addEventListener("zoomend",function(){
 });
 
 
-// function UpdateCluster(){
-//     var zoom=map.getZoom();
-// 				console.log(zoom)
-// 				if(zoom<15){
-// 					//获取屏幕边界
-// 					var bound=map.getBounds();
-//                     //清除以前的点
-//                     markerClusterer1.clearMarkers(markers);
-                    // markerClusterer2.clearMarkers(markers2);
-//                     //清除数组的数据
-//                     markers=[];
-//                     markers2=[];
-//                     //添加小区和医院数据
-//                     for (var i=0; i<data_info.length; i++) {
-//                         pt = new BMap.Point(data_info[i][0],data_info[i][1]);
-//                         if (bound.containsPoint(pt) ){  
-//                         var marker1 = new BMap.Marker(pt);        // 创建标注    
-//                         markers.push(marker1);
-//                         }
-//                     }
-//                     for (var i=0; i<data_hsp.length; i++) {
-//                         pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
-//                         if (bound.containsPoint(pt) ){  
-//                         var marker2 = new BMap.Marker(pt);        // 创建标注    
-//                         markers2.push(marker2);
-//                         }
-//                     }
-//                     //添加聚合点
-//                     markerClusterer1.addMarkers(markers);
-                    // markerClusterer2.addMarkers(markers2);
-// }
-
-// }
 
 
 </script>
