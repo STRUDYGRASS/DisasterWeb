@@ -7,9 +7,15 @@
 		private function db_createManger()
 		{
 			try{
-				$mongodbUrl = "mongodb://47.95.10.60:27017";
+				$mongodbUrl = "mongodb://10.0.0.9:27017";
+				$username = "yiqing";
+				$password = "HQU@2017";
 			  	$connStr = $mongodbUrl;
-			  	return new MongoDB\Driver\Manager($connStr);
+			  	$options = array(
+				   'username' => $confArr['username'],
+				   'password' => $confArr['password'],
+				  );
+			  	return new MongoDB\Driver\Manager($connStr, $options);
 			}
 			catch(Exception $e){
 	  			return false;
