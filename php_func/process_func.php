@@ -5,7 +5,7 @@
 	{
 		$data_need = [];
 		foreach ($data as $dataValue) {
-			$data_need[] = [$dataValue['x'],$dataValue['x'],$dataValue['dz']];
+			$data_need[] = [$dataValue['坐标x'],$dataValue['坐标y'],$dataValue['医院']];
 			}
 		return json_encode($data_need);
 	}
@@ -14,7 +14,7 @@
 	{
 		$data_need = [];
 		foreach ($data as $dataValue) {
-			$data_need[] = [$dataValue['坐标x'],$dataValue['坐标y'],$dataValue['医院']];
+			$data_need[] = [$dataValue['x'],$dataValue['y'],$dataValue['省'].$dataValue['市'].$dataValue['区（县）'].$dataValue['小区']];
 			}
 		return json_encode($data_need);
 	}
