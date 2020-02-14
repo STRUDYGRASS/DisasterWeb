@@ -290,12 +290,7 @@
 				title : "详细信息" , // 信息窗口标题
 				enableMessage:true//设置允许信息窗发送短息
 			   };
-	// for(var i=0;i<data_info.length;i++){
-	// 	var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
-	// 	var content = data_info[i][2];
-	// 	map.addOverlay(marker);               // 将标注添加到地图中
-	// 	addClickHandler(content,marker);
-	// };
+
 	function addClickHandler(content,marker){
 		marker.addEventListener("click",function(e){
 			openInfo(content,e)}
@@ -511,65 +506,18 @@
  ]
 
 
-//  for(var i=0;i<data_hsp.length;i++){
-// 		// var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
-// 		// var content = data_info[i][2];
-// 		// map.addOverlay(marker);               // 将标注添加到地图中
-// 		// addClickHandler(content,marker);
-	
-
-// 	//创建医院信息
-// 	var pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
-// 	var content = data_hsp[i][2];
-// 	var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
-// 	var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
-// 	map.addOverlay(marker2);   
-// 	addClickHandler(content,marker2); 
-// }
 
 
-//为什么不写成函数封装呢？因为这样就只运行一次了，我也不知道为什么
+//为什么不写成直接函数封装呢？因为这样就只运行一次了，我也不知道为什么
 //后面可以把医院的聚合改个样式，具体参考TextIconOverlay类做修改
 map.addEventListener("dragend",function(){  
-    var zoom=map.getZoom();
-				console.log(zoom)
-				if(zoom<15){
-					//获取屏幕边界
-					var bound=map.getBounds();
-                    //清除以前的点
-                    markerClusterer1.clearMarkers(markers);
-                    markerClusterer2.clearMarkers(markers2);
-                    //清除数组的数据
-                    markers=[];
-                    markers2=[];
-                    //添加小区和医院数据
-                    for (var i=0; i<data_info.length; i++) {
-                        pt = new BMap.Point(data_info[i][0],data_info[i][1]);
-                        if (bound.containsPoint(pt) ){  
-                        var marker1 = new BMap.Marker(pt);        // 创建标注  
-                        var content = data_info[i][2];
-
-                        markers.push(marker1);
-                        addClickHandler(content,marker1);                          
-                        }
-                    }
-                    for (var i=0; i<data_hsp.length; i++) {
-                        pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
-                        if (bound.containsPoint(pt) ){  
-                            var content = data_hsp[i][2];
-                            var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
-
-                            var marker2 = new BMap.Marker(pt,{icon:myIcon});        // 创建标注    
-                            markers2.push(marker2);
-                            addClickHandler(content,marker2);                             
-                        }
-                    }
-                    //添加聚合点
-                    markerClusterer1.addMarkers(markers);
-                    markerClusterer2.addMarkers(markers2);
-}
+    UpdateThings();
 });
 map.addEventListener("zoomend",function(){  
+    UpdateThings();
+});
+
+function UpdateThings(){
     var zoom=map.getZoom();
 				console.log(zoom)
 				if(zoom<15){
@@ -584,7 +532,7 @@ map.addEventListener("zoomend",function(){
                     //添加小区和医院数据
                     for (var i=0; i<data_info.length; i++) {
                         pt = new BMap.Point(data_info[i][0],data_info[i][1]);
-                        if (bound.containsPoint(pt) ){  
+                        if (bound.containsPoint(pt) && mAS_INFO.show){  
                         var marker1 = new BMap.Marker(pt);        // 创建标注  
                         var content = data_info[i][2];
 
@@ -594,7 +542,7 @@ map.addEventListener("zoomend",function(){
                     }
                     for (var i=0; i<data_hsp.length; i++) {
                         pt = new BMap.Point(data_hsp[i][0],data_hsp[i][1]);
-                        if (bound.containsPoint(pt) ){  
+                        if (bound.containsPoint(pt) && mAS_HSP.show){  
                             var content = data_hsp[i][2];
                             var myIcon = new BMap.Icon("hsp.png", new BMap.Size(24,24));
 
@@ -607,10 +555,54 @@ map.addEventListener("zoomend",function(){
                     markerClusterer1.addMarkers(markers);
                     markerClusterer2.addMarkers(markers2);
 }
-});
+}
 
+// 定义一个控件类,即function
+function AttributeShow(what,size){
+	  // 默认停靠位置和偏移量
+	  this.defaultAnchor = BMAP_ANCHOR_TOP_RIGHT;
+	  this.defaultOffset = new BMap.Size(10, size);
+      this.what = what;
+      this.show = true;
+	}
 
+	// 通过JavaScript的prototype属性继承于BMap.Control
+	AttributeShow.prototype = new BMap.Control();
 
+	// 自定义控件必须实现自己的initialize方法,并且将控件的DOM元素返回
+	// 在本方法中创建个div元素作为控件的容器,并将其添加到地图容器中
+	AttributeShow.prototype.initialize = function(map){
+	  // 创建一个DOM元素
+	  var div = document.createElement("div");
+      var That = this;
+	  // 添加文字说明
+	  div.appendChild(document.createTextNode("隐藏"+That.what));
+	  // 设置样式
+	  div.style.cursor = "pointer";
+	  div.style.border = "1px solid gray";
+	  div.style.backgroundColor = "white";
+	  div.onclick = function(e){
+        if (That.show){
+            That.show = false;
+            div.firstChild.nodeValue = "显式"+That.what;
+        }
+        else{
+            That.show = true;
+            div.firstChild.nodeValue = "隐藏"+That.what;
+        }
+        UpdateThings();
+	  }
+	  // 添加DOM元素到地图中
+	  map.getContainer().appendChild(div);
+	  // 将DOM元素返回
+	  return div;
+	}
+	// 创建控件
+	var mAS_HSP = new AttributeShow("医院",80);
+    var mAS_INFO = new AttributeShow("小区",120);
+	// 添加到地图当中
+	map.addControl(mAS_HSP);
+    map.addControl(mAS_INFO);
 
 </script>
 
