@@ -1,3 +1,10 @@
+<?php
+    include("/php_func/rand_aks.php"); 
+    $ak = rand_aks();
+    $preAkUrl = "http://api.map.baidu.com/api?v=2.0&ak=";
+    $src = $preAkUrl.$ak;
+    echo "<script type=\"text/javascript\" ".'src='.$src."> </script>";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,8 +35,6 @@
             float: left;
         }
     </style>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3ccb5362c4712a1dd2df47f58f49188a">
-    </script>
     <script type="text/javascript"
         src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
     <script type="text/javascript"
