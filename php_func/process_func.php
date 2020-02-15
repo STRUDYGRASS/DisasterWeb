@@ -5,7 +5,7 @@
 	{
 		$data_need = [];
 		foreach ($data as $dataValue) {
-			$data_need[] = [$dataValue['坐标x'],$dataValue['坐标y']];//,$dataValue['yiyuan']
+			$data_need[] = [$dataValue['x'],$dataValue['y'],$dataValue['yiyuan']];
 			}
 		return json_encode($data_need);
 	}
@@ -14,7 +14,7 @@
 	{
 		$data_need = [];
 		foreach ($data as $dataValue) {
-			$data_need[] = [$dataValue['x'],$dataValue['y']];//,$dataValue['xiaoqu']
+			$data_need[] = [$dataValue['x'],$dataValue['y'],$dataValue['xiaoqu']];
 			}
 		return json_encode($data_need);
 	}
