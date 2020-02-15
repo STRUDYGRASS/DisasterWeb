@@ -115,6 +115,7 @@
                 }
             },
             error: function (err) {
+                alert(JSON.stringify(err));
                 alert("数据更新失败！");
             }
         });
