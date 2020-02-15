@@ -6,7 +6,7 @@
 	$thing = $_POST['thing'];
 
 	$dbClass = new dbClass;
-	if($thing == "医院")
+	if($thing == "定点医院")
 	{
 		$filter = [];
 		$collection = 'yiyuan';
@@ -14,7 +14,7 @@
 		$data = mongo_to_json_hsp($data_array);
 		echo $data;
 	}
-	elseif ($thing == "小区") 
+	elseif ($thing == "详细地址") 
 	{
 		$filter = [];
 		$collection = 'dili';
