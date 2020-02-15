@@ -1,6 +1,6 @@
 <?php
-	include_once $_SERVER['DOCUMENT_ROOT']."/DisasterWeb/php_func/db_func.php";
-  	include_once $_SERVER['DOCUMENT_ROOT']."/DisasterWeb/php_func/process_func.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/php_func/db_func.php";
+  	include_once $_SERVER['DOCUMENT_ROOT']."/php_func/process_func.php";
 
 	$time = $_POST['time'];
 	$thing = $_POST['thing'];

@@ -1,5 +1,5 @@
 <?php
-    include_once $_SERVER['DOCUMENT_ROOT']."/DisasterWeb/php_func/rand_aks.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/php_func/rand_aks.php";
     $ak = rand_aks();
     $preAkUrl = "http://api.map.baidu.com/api?v=2.0&ak=";
     $src = $preAkUrl.$ak;
@@ -49,6 +49,12 @@
             background: #b1b0b0;
             border: none;
         }
+
+        .container{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
     </style>
     <script type="text/javascript"
         src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
@@ -60,7 +66,23 @@
 </head>
 
 <body>
-    <div id="allmap"></div>
+    <div class="container">
+        <div id="allmap"></div>
+        <div style="position: absolute; bottom: 5px; right: 45px;" class="div-clear">
+            <span>
+                <button type="button" class="btn btn-danger" onclick="window.location.href = 'https://www.http://118.89.57.44/announciation.html'">
+                 <span class="glyphicon glyphicon glyphicon-zoom-in"></span> 免责声明
+                </button>
+            </span>
+        </div>
+        <div style="position: absolute; bottom: 0px; right: 153px;" class="div-by">
+            <span>
+                <a style="font-style: ; font-size:30px; font-weight: bold; ">
+                    <span class="glyphicon glyphicon-user" style="color: rgb(255, 140, 60);" ></span>XXX团队
+                </a>
+            </span>
+        </div>
+    </div>
 </body>
 
 </html>
