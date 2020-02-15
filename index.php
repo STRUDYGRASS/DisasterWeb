@@ -1,5 +1,5 @@
 <?php
-    include("/php_func/rand_aks.php"); 
+    include_once $_SERVER['DOCUMENT_ROOT']."/DisasterWeb/php_func/rand_aks.php";
     $ak = rand_aks();
     $preAkUrl = "http://api.map.baidu.com/api?v=2.0&ak=";
     $src = $preAkUrl.$ak;
