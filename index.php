@@ -76,7 +76,7 @@
     };
 
     function UpdateThings() {
-        var zoom = map.getZoom();
+	    var zoom = map.getZoom();
         // console.log(zoom)
         if (zoom < 15) {
             //获取屏幕边界
@@ -120,14 +120,15 @@
     function UpdateInfo(m_time, m_thing) {
         $.ajax({
             url: "server.php",
-            type: "POST",
+		    type: "POST",
+		    async: false,
             data: {
                 time: m_time,
                 thing: m_thing
             },
             cache: false,
             dataType: "json",
-            success: function (data) {
+	    success: function (data) {
                 if (m_thing == "医院") {
                     data_hsp = data;
                 } else if (m_thing == "小区") {
@@ -138,7 +139,7 @@
                 alert(JSON.stringify(err));
                 alert("数据更新失败！");
             }
-        });
+    });
     }
 
     function UpdateInfos(time){
@@ -224,5 +225,7 @@
     map.addControl(timeline);
     var data_info = [];
     var data_hsp = [];
+    //var already_sysn = false;
     UpdateInfos("2020-02-11");
+    //already_sysn = true;
 </script>
