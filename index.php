@@ -97,7 +97,6 @@
         }
     }
 
-<<<<<<< HEAD
     function UpdateInfo(m_time, m_thing) {
         $.ajax({
             url: "server.php",
@@ -126,8 +125,6 @@
         UpdateInfo(time,"小区");
         UpdateThings();
     }
-=======
->>>>>>> 13a52d6ef093448e5b1becf77b59741cb72aaf7b
 
 
 

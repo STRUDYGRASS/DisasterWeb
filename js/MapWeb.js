@@ -109,29 +109,6 @@
         return ["2020-02-10", "2020-02-11", "2020-02-12"]
     }
 
-    function UpdateInfo(m_time, m_thing) {
-        $.ajax({
-            url: "???",
-            type: "POST",
-            data: {
-                time: m_time,
-                thing: m_thing
-            },
-            cache: false,
-            dataType: "json",
-            success: function (data) {
-                if (m_thing == "医院") {
-                    data_hsp = data;
-                } else if (m_thing == "小区") {
-                    data_info = data;
-                }
-            },
-            error: function (err) {
-                alert("数据更新失败！");
-            }
-        });
-        // data_info = [];
-    }
 
     function UpdateInfos(time) {
         UpdateInfo(time, "医院");
