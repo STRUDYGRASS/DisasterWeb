@@ -71,6 +71,7 @@
         opt_textSize: 14
     }];
 
+
     function TimeLine(time) {
         // 默认停靠位置和偏移量
         this.defaultAnchor = BMAP_ANCHOR_BOTTOM_RIGHT;
@@ -96,8 +97,21 @@
         }
         datasDiv += '</ul>';
         div.innerHTML = datasDiv;
+        $("li", div).each(function(){
+            $(this).addClass("start");
+            if (this.innerHTML == That.time){
+                $(this).removeClass("start");
+                $(this).addClass("end");
+                That.selected = this;
+            }
+        })
         $("li", div).click(function (e) {
+            $(That.selected).removeClass("end");
+            $(That.selected).addClass("start");
+            $(this).removeClass("start");
+            $(this).addClass("end");
             UpdateInfos(this.innerHTML);
+            That.selected = this;
         });
         // 添加DOM元素到地图中
         map.getContainer().appendChild(div);

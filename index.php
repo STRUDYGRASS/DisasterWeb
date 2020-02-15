@@ -34,6 +34,16 @@
             width: 20%;
             float: left;
         }
+        .start {
+            cursor: pointer;
+        }
+
+        .end {
+            cursor: pointer;
+            color: #fff;
+            background: #b1b0b0;
+            border: none;
+        }
     </style>
     <script type="text/javascript"
         src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
