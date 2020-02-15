@@ -129,9 +129,9 @@
             cache: false,
             dataType: "json",
 	    success: function (data) {
-                if (m_thing == "医院") {
+                if (m_thing == "定点医院") {
                     data_hsp = data;
-                } else if (m_thing == "小区") {
+                } else if (m_thing == "详细地址") {
                     data_info = data;
                 }
             },
@@ -143,8 +143,8 @@
     }
 
     function UpdateInfos(time){
-        UpdateInfo(time,"医院");
-        UpdateInfo(time,"小区");
+        UpdateInfo(time,"定点医院");
+        UpdateInfo(time,"详细地址");
         UpdateThings();
     }
     
@@ -215,8 +215,8 @@
     });
 
     // 创建控件
-    var mAS_HSP = new AttributeShow("医院", 80);
-    var mAS_INFO = new AttributeShow("小区", 120);
+    var mAS_HSP = new AttributeShow("定点医院", 80);
+    var mAS_INFO = new AttributeShow("详细地址", 120);
     // 添加到地图当中
     map.addControl(mAS_HSP);
     map.addControl(mAS_INFO);

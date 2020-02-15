@@ -1,10 +1,11 @@
     // 定义一个控件类,即function
-    function AttributeShow(what, size) {
+    function AttributeShow(what, size,pic_add) {
         // 默认停靠位置和偏移量
         this.defaultAnchor = BMAP_ANCHOR_TOP_RIGHT;
         this.defaultOffset = new BMap.Size(10, size);
         this.what = what;
         this.show = true;
+        this.pic_add = pic_add;
     }
 
     // 通过JavaScript的prototype属性继承于BMap.Control
@@ -17,7 +18,13 @@
         var div = document.createElement("div");
         var That = this;
         // 添加文字说明
-        div.appendChild(document.createTextNode("隐藏" + That.what));
+        div.appendChild(document.createTextNode("隐藏 " + That.what+" "));
+        var img = document.createElement('img');//创建一个标签
+        img.setAttribute('src',That.pic_add);//给标签定义src链接
+        img.setAttribute('height',24);
+        img.setAttribute('width',24);
+
+        div.appendChild(img);
         // 设置样式
         div.style.cursor = "pointer";
         div.style.border = "1px solid gray";
@@ -25,10 +32,10 @@
         div.onclick = function (e) {
             if (That.show) {
                 That.show = false;
-                div.firstChild.nodeValue = "显式" + That.what;
+                div.firstChild.nodeValue = "显式 " + That.what + " ";
             } else {
                 That.show = true;
-                div.firstChild.nodeValue = "隐藏" + That.what;
+                div.firstChild.nodeValue = "隐藏" + That.what + " ";
             }
             UpdateThings();
         }
@@ -125,7 +132,7 @@
 
 
     function UpdateInfos(time) {
-        UpdateInfo(time, "医院");
-        UpdateInfo(time, "小区");
+        UpdateInfo(time, "定点医院");
+        UpdateInfo(time, "详细地址");
         UpdateThings();
     }
