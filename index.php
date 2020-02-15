@@ -1,9 +1,9 @@
 <?php
-    include("/php_func/rand_aks.php"); 
-    $ak = rand_aks();
-    $preAkUrl = "http://api.map.baidu.com/api?v=2.0&ak=";
-    $src = $preAkUrl.$ak;
-    echo "<script type=\"text/javascript\" ".'src='.$src."> </script>";
+include("/php_func/rand_aks.php");
+$ak = rand_aks();
+$preAkUrl = "http://api.map.baidu.com/api?v=2.0&ak=";
+$src = $preAkUrl . $ak;
+echo "<script type=\"text/javascript\" " . 'src=' . $src . "> </script>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +34,7 @@
             width: 20%;
             float: left;
         }
+
         .start {
             cursor: pointer;
         }
@@ -45,10 +46,8 @@
             border: none;
         }
     </style>
-    <script type="text/javascript"
-        src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
-    <script type="text/javascript"
-        src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/MapWeb.js"></script>
     <title>疫情地图</title>
@@ -61,8 +60,6 @@
 </html>
 
 <script type="text/javascript">
-    
-
     function openInfo(content, e) {
         var p = e.target;
         var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
@@ -122,26 +119,26 @@
             },
             cache: false,
             dataType: "json",
-            success: function (data) {
+            success: function(data) {
                 if (m_thing == "医院") {
                     data_hsp = data;
                 } else if (m_thing == "小区") {
                     data_info = data;
                 }
             },
-            error: function (err) {
+            error: function(err) {
                 alert(JSON.stringify(err));
                 alert("数据更新失败！");
             }
         });
     }
 
-    function UpdateInfos(time){
-        UpdateInfo(time,"医院");
-        UpdateInfo(time,"小区");
+    function UpdateInfos(time) {
+        UpdateInfo(time, "医院");
+        UpdateInfo(time, "小区");
         UpdateThings();
     }
-    
+
     // 百度地图API功能
     var map = new BMap.Map("allmap");
     // map.centerAndZoom("泉州",12);  
@@ -201,10 +198,10 @@
     }));
 
     //为什么不写成直接函数封装呢？因为这样就只运行一次了，我也不知道为什么
-    map.addEventListener("dragend", function () {
+    map.addEventListener("dragend", function() {
         UpdateThings();
     });
-    map.addEventListener("zoomend", function () {
+    map.addEventListener("zoomend", function() {
         UpdateThings();
     });
 
@@ -214,7 +211,7 @@
     // 添加到地图当中
     map.addControl(mAS_HSP);
     map.addControl(mAS_INFO);
-    var timelist =  GetTime();
+    var timelist = GetTime();
     var timeline = new TimeLine("2020-02-11");
     map.addControl(timeline);
     UpdateInfos("2020-02-11");

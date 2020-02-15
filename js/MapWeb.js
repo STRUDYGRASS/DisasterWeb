@@ -97,9 +97,9 @@
         }
         datasDiv += '</ul>';
         div.innerHTML = datasDiv;
-        $("li", div).each(function(){
+        $("li", div).each(function () {
             $(this).addClass("start");
-            if (this.innerHTML == That.time){
+            if (this.innerHTML == That.time) {
                 $(this).removeClass("start");
                 $(this).addClass("end");
                 That.selected = this;
