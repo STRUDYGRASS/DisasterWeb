@@ -6,7 +6,7 @@
 	$filter = [];
 	$collection = 'yiyuan';
 	//$data_array = $dbClass->db_find($filter, $collection);
-	$data_array[] =['2020-02-13','2020-02-13','2020-02-13'，'2020-02-13']
+	$data_array[] =['2020-02-13','2020-02-13','2020-02-13','2020-02-13'];
 	$data = mongo_to_json_time($data_array);
 	echo $data;
 ?>
