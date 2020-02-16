@@ -40,7 +40,7 @@
                 div.firstChild.nodeValue = "显示 " + That.what + " ";
             } else {
                 That.show = true;
-                div.firstChild.nodeValue = "隐藏" + That.what + " ";
+                div.firstChild.nodeValue = "隐藏 " + That.what + " ";
             }
             UpdateThings();
         }
