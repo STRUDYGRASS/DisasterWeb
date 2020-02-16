@@ -259,7 +259,7 @@
             cache: false,
             dataType: "json",
         success: function (data) {
-               return data;
+               timelist = data[0];
             },
             error: function (err) {
                 alert(JSON.stringify(err));
@@ -340,7 +340,8 @@
     // 添加到地图当中
     map.addControl(mAS_HSP);
     map.addControl(mAS_INFO);
-    var timelist =  GetTime();
+    var timelist = [];
+    GetTime();
     var timeline = new TimeLine("2020-02-11");
     map.addControl(timeline);
     var data_info = [];
