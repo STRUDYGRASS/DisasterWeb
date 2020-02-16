@@ -126,9 +126,49 @@
         return div;
     }
 
-    function GetTime() { //后面调整成数据库读取
-        return ["2020-02-10", "2020-02-11", "2020-02-12"]
+    function UpdateInfo(m_time, m_thing) {
+        $.ajax({
+            url: "/requestData/getTimeThing.php",
+		    type: "POST",
+		    async: false,
+            data: {
+                time: m_time,
+                thing: m_thing
+            },
+            cache: false,
+            dataType: "json",
+	    success: function (data) {
+                if (m_thing == "定点医院") {
+                    data_hsp = data;
+                } else if (m_thing == "详细地址") {
+                    data_info = data;
+                }
+            },
+            error: function (err) {
+                alert(JSON.stringify(err));
+                alert("数据更新失败！");
+            }
+    });
     }
+
+    
+    function GetTime() {
+        $.ajax({
+            url: "/requestData/getTime.php",
+            type: "POST",
+            async: false,
+            cache: false,
+            dataType: "json",
+        success: function (data) {
+               timelist = data[0];
+            },
+            error: function (err) {
+                alert(JSON.stringify(err));
+                alert("数据更新失败！");
+            }
+    });
+    }
+
 
 
     function UpdateInfos(time) {
