@@ -222,7 +222,7 @@
 
     function UpdateInfo(m_time, m_thing) {
         $.ajax({
-            url: "server.php",
+            url: "/requestData/getTimeThing.php",
 		    type: "POST",
 		    async: false,
             data: {
@@ -249,6 +249,23 @@
         UpdateInfo(time,"定点医院");
         UpdateInfo(time,"详细地址");
         UpdateThings();
+    }
+
+    function GetTime() {
+        $.ajax({
+            url: "/requestData/getTime.php",
+            type: "POST",
+            async: false,
+            cache: false,
+            dataType: "json",
+        success: function (data) {
+               return data;
+            },
+            error: function (err) {
+                alert(JSON.stringify(err));
+                alert("数据更新失败！");
+            }
+    });
     }
     
     // 百度地图API功能

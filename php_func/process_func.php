@@ -1,4 +1,3 @@
-
 <?php
 
 	function mongo_to_json_hsp($data)
@@ -17,6 +16,12 @@
 			$data_need[] = [$dataValue['x'],$dataValue['y'],$dataValue['shi'].$dataValue['quorxian'].$dataValue['xiaoqu']];
 			}
 		return json_encode($data_need);
+	}
+
+	function mongo_to_json_time($data)
+	{
+		
+		return json_encode($data);
 	}
 
 ?>
