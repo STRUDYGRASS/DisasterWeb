@@ -96,14 +96,22 @@
         <div id="allmap"></div>
         <div style="position: absolute; bottom: 5px; right: 185px;" class="div-clear">
             <span>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon glyphicon-zoom-in"></span>免责声明
+                <button class="btn-group">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-map-marker"></span>疫情途经地点
+                    </button>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon glyphicon glyphicon-tasks"></span>确诊人员分布
+                    </button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon glyphicon-zoom-in"></span>免责声明
+                    </button>
                 </button>
         </div>
         <div style="position: absolute; bottom: 0px; right: 5px;" class="div-by">
             <span>
-                <a style="font-style: ; font-size:30px; font-weight: bold; color: #B3B3B3;">
-                    <span class="glyphicon glyphicon-user" ></span>XXX团队
+                <a style="font-style: ;  font-weight: bold; color: #B3B3B3;">
+                    <span class="glyphicon glyphicon-user" ></span>华侨大学2017计科
                 </a>
             </span>
         </div>
