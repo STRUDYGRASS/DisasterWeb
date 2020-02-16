@@ -49,7 +49,7 @@
             background: #b1b0b0;
             border: none;
         }
-        
+
         .modal-dialog {
             position: absolute;
             top: 0;
@@ -94,13 +94,13 @@
 <body>
     <div class="panel panel-default">
         <div id="allmap"></div>
-        <div style="position: absolute; bottom: 5px; right: 200px;" class="div-clear">
+        <div style="position: absolute; bottom: 5px; right: 185px;" class="div-clear">
             <span>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                     <span class="glyphicon glyphicon glyphicon-zoom-in"></span>免责声明
                 </button>
         </div>
-        <div style="position: absolute; bottom: 0px; right: 20px;" class="div-by">
+        <div style="position: absolute; bottom: 0px; right: 5px;" class="div-by">
             <span>
                 <a style="font-style: ; font-size:30px; font-weight: bold; color: #B3B3B3;">
                     <span class="glyphicon glyphicon-user" ></span>XXX团队
