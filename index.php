@@ -96,17 +96,24 @@
         <div id="allmap"></div>
         <div style="position: absolute; bottom: 5px; right: 185px;" class="div-clear">
             <span>
-                <button class="btn-group">
+                <div class="btn-group">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: none;">
                         <span class="glyphicon glyphicon-map-marker"></span>疫情途经地点
                     </button>
                     <button class="btn btn-info" data-toggle="modal" data-target="#myModal" style="display: none;">
+                <div class="btn-group">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display:none;">
+                        <span class="glyphicon glyphicon-map-marker"></span>疫情途经地点
+                    </button>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#myModal" style="display:none;">
                         <span class="glyphicon glyphicon glyphicon glyphicon-tasks"></span>确诊人员分布
                     </button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                         <span class="glyphicon glyphicon glyphicon-zoom-in"></span>免责声明
                     </button>
-                </button>
+                </div>
+		</div>
+	     </span>
         </div>
         <div style="position: absolute; bottom: 0px; right: 5px;" class="div-by">
             <span>
@@ -299,8 +306,8 @@
     });
 
     // 创建控件
-    var mAS_HSP = new AttributeShow("定点医院", 80,"image/hsp.png");
-    var mAS_INFO = new AttributeShow("详细地址", 120,"image/info.png");
+    var mAS_HSP = new AttributeShow("定点医院", 80,"image/hsp.png",false);
+    var mAS_INFO = new AttributeShow("详细地址", 120,"image/info.png",true);
     // 添加到地图当中
     map.addControl(mAS_HSP);
     map.addControl(mAS_INFO);
