@@ -1,10 +1,10 @@
     // 定义一个控件类,即function
-    function AttributeShow(what, size,pic_add) {
+    function AttributeShow(what, size,pic_add,statu) {
         // 默认停靠位置和偏移量
         this.defaultAnchor = BMAP_ANCHOR_TOP_RIGHT;
         this.defaultOffset = new BMap.Size(10, size);
         this.what = what;
-        this.show = true;
+        this.show = statu;
         this.pic_add = pic_add;
     }
 
@@ -18,7 +18,12 @@
         var div = document.createElement("div");
         var That = this;
         // 添加文字说明
-        div.appendChild(document.createTextNode("隐藏 " + That.what+" "));
+        if (That.show){
+            div.appendChild(document.createTextNode("隐藏 " + That.what+" "));
+        }
+        else{
+            div.appendChild(document.createTextNode("显示 " + That.what+" "));
+        }
         var img = document.createElement('img');//创建一个标签
         img.setAttribute('src',That.pic_add);//给标签定义src链接
         img.setAttribute('height',24);
@@ -32,7 +37,7 @@
         div.onclick = function (e) {
             if (That.show) {
                 That.show = false;
-                div.firstChild.nodeValue = "显式 " + That.what + " ";
+                div.firstChild.nodeValue = "显示 " + That.what + " ";
             } else {
                 That.show = true;
                 div.firstChild.nodeValue = "隐藏" + That.what + " ";

@@ -299,8 +299,8 @@
     });
 
     // 创建控件
-    var mAS_HSP = new AttributeShow("定点医院", 80,"image/hsp.png");
-    var mAS_INFO = new AttributeShow("详细地址", 120,"image/info.png");
+    var mAS_HSP = new AttributeShow("定点医院", 80,"image/hsp.png",false);
+    var mAS_INFO = new AttributeShow("详细地址", 120,"image/info.png",true);
     // 添加到地图当中
     map.addControl(mAS_HSP);
     map.addControl(mAS_INFO);
