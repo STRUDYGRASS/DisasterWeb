@@ -49,13 +49,7 @@
             background: #b1b0b0;
             border: none;
         }
-
-        .container{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
+        
         .modal-dialog {
             position: absolute;
             top: 0;
@@ -98,7 +92,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="panel panel-default">
         <div id="allmap"></div>
         <div style="position: absolute; bottom: 5px; right: 200px;" class="div-clear">
             <span>
@@ -115,61 +109,61 @@
         </div>
     </div>
     <!-- 模态框（Modal） -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                        <h1 class="modal-title" id="myModalLabel" style="text-align: center;">
-                            【免责声明】
-                        </h1>
-                </div>
-                <div class="modal-body">
-                    <div class="col-md-12 column">
-                      <p>
-                         <em>1、</em> <strong>《新冠肺炎疫情地图》</strong>基于各省市卫生健康委员会、人民政府、定点医院等官网公布的确诊病例活动轨迹及医院概况，进行了时间、地点、等信息的自动抽取与信息标注。并通过百度地图提供的相关API进行可视化呈现。
-                      </p>
-                      <p>
-                         <em>2、</em> 本网站只是对以上信息来源的信息进行了可视化呈现。由于消息来源存在信息提供不完全的情况（如确诊病例活动轨迹缺失、地点名称不准确等），呈现结果仅供参考。本网站不保证呈现的信息全部准确，<strong>亦不承担任何法律责任</strong>。
-                      </p>
-                      <p>
-                         <em>3、</em> 任何由于黑客攻击、计算机病毒侵入或发作、因政府管制而造成的暂时性关闭等影响网络正常经营的不可抗力而造成的直接或间接损失，本网站<strong>概不负责</strong>。
-                      </p>
-                      <p>
-                         <em>4、</em> 因和本网站链接的其它网站所造成的个人资料泄露及由此而导致的任何法律争议和后果，本网站<strong>概不负责</strong>。
-                      </p>
-                      <p>
-                         <em>5、</em> 本网站如因系统维护或升级而需暂停服务时，将事先公告。若因线路及非本团队控制范围外的硬件故障或其它不可抗力而导致暂停服务，于暂停服务期间造成的一切不便与损失，本网站<strong>概不责任</strong>。
-                      </p>
-                      <p>
-                         <em>6、</em> 本网站使用者因为违反本声明的规定而触犯中华人民共和国法律的，一切后果由使用者自行承担，本网站<strong>概不负责</strong>。
-                      </p>
-                      <p>
-                         <em>7、</em> 凡以任何方式登陆本网站或直接、间接使用本网站资料者，视为自愿接受本网站声明的约束。
-                      </p>
-                      <p>
-                         <em>8、</em> 本网站若无意中侵犯了某个媒体或个人的知识产权，请等留言区功能开放后在留言区向我们反馈，我们将立即删除。
-                      </p>
-                      <p>
-                         <em>9、</em> 呈现内容如有任何信息标注错误或地图呈现错误，请等留言区功能开放后在留言区向我们反馈，我们会及时对您留言中提出的问题进行检查与更正。
-                      </p>
-                      <p>
-                         <em>10、</em><strong>最终解释权归本团队所有</strong>。
-                      </p>
-                      <p>
-                         <b>【注意】</b> 地图上所呈现数字为<strong>疫情出现地点数</strong>，并非病例人数。
-                      </p>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                            <h1 class="modal-title" id="myModalLabel" style="text-align: center;">
+                                【免责声明】
+                            </h1>
                     </div>
+                    <div class="modal-body">
+                        <div class="col-md-12 column">
+                          <p>
+                             <em>1、</em> <strong>《新冠肺炎疫情地图》</strong>基于各省市卫生健康委员会、人民政府、定点医院等官网公布的确诊病例活动轨迹及医院概况，进行了时间、地点、等信息的自动抽取与信息标注。并通过百度地图提供的相关API进行可视化呈现。
+                          </p>
+                          <p>
+                             <em>2、</em> 本网站只是对以上信息来源的信息进行了可视化呈现。由于消息来源存在信息提供不完全的情况（如确诊病例活动轨迹缺失、地点名称不准确等），呈现结果仅供参考。本网站不保证呈现的信息全部准确，<strong>亦不承担任何法律责任</strong>。
+                          </p>
+                          <p>
+                             <em>3、</em> 任何由于黑客攻击、计算机病毒侵入或发作、因政府管制而造成的暂时性关闭等影响网络正常经营的不可抗力而造成的直接或间接损失，本网站<strong>概不负责</strong>。
+                          </p>
+                          <p>
+                             <em>4、</em> 因和本网站链接的其它网站所造成的个人资料泄露及由此而导致的任何法律争议和后果，本网站<strong>概不负责</strong>。
+                          </p>
+                          <p>
+                             <em>5、</em> 本网站如因系统维护或升级而需暂停服务时，将事先公告。若因线路及非本团队控制范围外的硬件故障或其它不可抗力而导致暂停服务，于暂停服务期间造成的一切不便与损失，本网站<strong>概不责任</strong>。
+                          </p>
+                          <p>
+                             <em>6、</em> 本网站使用者因为违反本声明的规定而触犯中华人民共和国法律的，一切后果由使用者自行承担，本网站<strong>概不负责</strong>。
+                          </p>
+                          <p>
+                             <em>7、</em> 凡以任何方式登陆本网站或直接、间接使用本网站资料者，视为自愿接受本网站声明的约束。
+                          </p>
+                          <p>
+                             <em>8、</em> 本网站若无意中侵犯了某个媒体或个人的知识产权，请等留言区功能开放后在留言区向我们反馈，我们将立即删除。
+                          </p>
+                          <p>
+                             <em>9、</em> 呈现内容如有任何信息标注错误或地图呈现错误，请等留言区功能开放后在留言区向我们反馈，我们会及时对您留言中提出的问题进行检查与更正。
+                          </p>
+                          <p>
+                             <em>10、</em><strong>最终解释权归本团队所有</strong>。
+                          </p>
+                          <p>
+                             <b>【注意】</b> 地图上所呈现数字为<strong>疫情出现地点数</strong>，并非病例人数。
+                          </p>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" onclick="javascrtpt:window.location.href='about:blank'">拒绝</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">同意</button>
                 </div>
-            </div><!-- /.modal-content -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="javascrtpt:window.location.href='about:blank'">拒绝</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">同意</button>
-            </div>
-        </div><!-- /.modal -->
-    </div>
+            </div><!-- /.modal -->
+        </div>
 </body>
 
 </html>
