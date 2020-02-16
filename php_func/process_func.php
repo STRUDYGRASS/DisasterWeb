@@ -13,7 +13,7 @@
 	{
 		$data_need = [];
 		foreach ($data as $dataValue) {
-			$data_need[] = [$dataValue['x'],$dataValue['y'],$dataValue['shi'].$dataValue['quorxian'].$dataValue['xiaoqu']];
+			$data_need[] = [$dataValue['x'],$dataValue['y'],$dataValue['shi']."市".$dataValue['quorxian'].$dataValue['xiaoqu']];
 			}
 		return json_encode($data_need);
 	}

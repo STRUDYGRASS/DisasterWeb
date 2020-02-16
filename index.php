@@ -97,10 +97,10 @@
         <div style="position: absolute; bottom: 5px; right: 185px;" class="div-clear">
             <span>
                 <button class="btn-group">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: none;">
                         <span class="glyphicon glyphicon-map-marker"></span>疫情途经地点
                     </button>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                    <button class="btn btn-info" data-toggle="modal" data-target="#myModal" style="display: none;">
                         <span class="glyphicon glyphicon glyphicon glyphicon-tasks"></span>确诊人员分布
                     </button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
